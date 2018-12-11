@@ -1,0 +1,113 @@
+* {
+	font-family: 'Noto Serif', serif;
+}
+
+body {
+  line-height: 1.6;
+}
+
+#header {
+	color: white;
+	width: 100%;
+	height: 60vh;
+	text-align:center;
+	background: url("bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 10px;
+    width: 40px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+#infoHeader {
+	padding-top: 5vh;
+	background: #F5F5F5;
+    vertical-align: middle;
+}
+
+#search {
+	padding-top: 20vh;
+	color: #DCDCDC;
+}
+
+#info {
+	width: 100%;
+	opacity: 0;
+}
+
+#weather{
+	padding-top: 5vh;
+}
+
+#population {
+	padding-top: 5vh;
+}
+
+.source{
+	font-size: 9px;
+}
+
+#country {
+	width: 15%;
+	height: 100%;
+}
+
+.grid-item-1 { grid-area: header; }
+.grid-item-2 { grid-area: left; }
+.grid-item-3 { grid-area: right; }
+.grid-item-4 { grid-area: leftFooter; }
+.grid-item-5 { grid-area: rightFooter; }
+
+.grid-container {
+  display: grid;
+	grid-template-areas:
+	'header header header header'
+	'left left right right'
+	'leftFooter leftFooter rightFooter rightFooter';
+  text-align: center; 
+  grid-template-rows: 10% 35% 55%;
+  height: 110vh;
+}
+
+#map {
+	width: 75%;
+	height: 80%;
+	margin-left: 10%;
+	min-width:75%;
+}
+
+#images {
+	box-sizing: content-box;
+	width: 65%;
+    height: 80%;
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    margin-left: 20%;
+    max-width: inherit;
+}
+
+.mySlides {
+	display:none;
+	width:inherit;
+	height:inherit;
+	max-width: inherit;
+}
