@@ -69,7 +69,8 @@ function getData(){
         
         //header.style.background = 'url("https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg") no-repeat center center fixed';
         //header.style.backgroundSize = "cover";
-        images.innerHTML += '<div class="thumbnail"><img class="grid-item-image" style="" src="https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"/></div>';
+        images.innerHTML += '<div class="thumbnail"><img id="cityImage" class="grid-item-image" onclick="gridClick(this.src)" src="https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"/></div>';
+    
         }
       })
       .catch(function(err) {
@@ -84,6 +85,8 @@ function getData(){
 
     MyFadeFunction();
     initMap(city);
+    //gridClick();
+
 }
 
 function getSelectedOption(element) {
@@ -121,3 +124,21 @@ function initMap(city) {
     });
 
 }
+
+function gridClick(_src) {
+    var modal = document.getElementById('myModal');
+    var cityImage = document.getElementById('images');
+    var modalImg = document.getElementById("img01");
+    cityImage.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = _src;
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() { 
+    modal.style.display = "none";
+    }
+}
+
+
+
