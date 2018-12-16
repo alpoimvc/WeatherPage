@@ -48,10 +48,39 @@ function getData(){
             //console.log(err);
             alert('Please enter a valid city');
           });
+
+    var images = document.getElementById('images');
+   
+    //GET FLICKR
+      var urlFlickr = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c8a68fc6e1f923465cf60b9583e7b52d&nojsoncallback=true&per_page=9&format=json&sort=relevance&text="
+
+      fetch(urlFlickr+city)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data.photos.photo);
+
+        for(let i=0; i<data.photos.photo.length; i++){
+        var farmId = data.photos.photo[i].farm;
+        var serverId = data.photos.photo[i].server;
+        var id = data.photos.photo[i].id;
+        var secret = data.photos.photo[i].secret;
+        
+        //header.style.background = 'url("https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg") no-repeat center center fixed';
+        //header.style.backgroundSize = "cover";
+        images.innerHTML += '<div class="thumbnail"><img class="grid-item-image" style="" src="https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"/></div>';
+        }
+      })
+      .catch(function(err) {
+            console.log(err);
+            alert('Please enter a valid city');
+          });
     
     }else{
     alert('Please enter a valid city');
     }
+
 
     MyFadeFunction();
     initMap(city);
@@ -91,19 +120,4 @@ function initMap(city) {
         }
     });
 
-}
-
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 2000); // Change image every 2 seconds
 }
